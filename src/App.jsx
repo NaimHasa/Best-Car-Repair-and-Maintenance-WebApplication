@@ -6,7 +6,7 @@ import router from './Router/Router/Routes';
 const App = () => {
 
   return (
-    <div>
+    <div data-theme="light" className='max-w-7xl	 mx-auto'>
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
