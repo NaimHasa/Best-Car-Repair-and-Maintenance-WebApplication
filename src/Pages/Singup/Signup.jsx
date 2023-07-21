@@ -2,12 +2,10 @@ import React from 'react';
 import img from '../../../src/assets/images/login/login.svg';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
-
-    const handleSingup = event => {
+const Signup = () => {
+    const handleLogin = event => {
         event.preventDefualt();
     }
-
     return (
         <div className="hero w-full my-8">
             <div className="hero-content grid gap-28  md:grid-cols-2 flex-col lg:flex-row ">
@@ -17,9 +15,16 @@ const Login = () => {
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
 
-                    <h1 className="text-3xl font-bold text-center">Login now!</h1>
+                    <h1 className="text-3xl font-bold text-center">Please Sign Up</h1>
 
-                    <form onSubmit={handleSingup} className="card-body">
+                    <form onSubmit={handleLogin} className="card-body">
+                        <div className="form-control">
+
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text" name='name' placeholder="name" className="input input-bordered" />
+                        </div>
                         <div className="form-control">
 
                             <label className="label">
@@ -29,22 +34,20 @@ const Login = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                <span className="label-text">Current Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                            <input type="password" name='password' placeholder="current password" className="input input-bordered" />
+
                         </div>
                         <div className="form-control mt-6">
-                            <input type="submit" value="Sign Up" className="btn btn-primary" />
+                            <input type="submit" value="Login" className="btn btn-primary" />
                         </div>
                     </form>
-                    <p className='text-center'>New to Genius Car Please <Link to='/signup' className='text-orange-600 font-bold'>SignUp</Link></p>
+                    <p className='text-center'>Already You have to Account? Please <Link className='text-orange-600 font-bold' to='/login'>LogIn</Link></p>
                 </div>
             </div>
         </div >
     );
 };
 
-export default Login;
+export default Signup;
