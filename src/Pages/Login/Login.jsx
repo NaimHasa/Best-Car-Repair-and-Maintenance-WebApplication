@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
 
-    const handleSingup = event => {
+    const handleLogIn = event => {
         event.preventDefualt();
     }
 
@@ -19,7 +19,7 @@ const Login = () => {
 
                     <h1 className="text-3xl font-bold text-center">Login now!</h1>
 
-                    <form onSubmit={handleSingup} className="card-body">
+                    <form onSubmit={handleLogIn} className="card-body">
                         <div className="form-control">
 
                             <label className="label">
