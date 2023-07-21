@@ -3,15 +3,16 @@ import Logo from '../../../assets/logo.svg';
 import { Link } from 'react-router-dom';
 const Header = () => {
     const menuItem = <>
-        <ul className="menu menu-vertical lg:menu-horizontal rounded-box text-green-400 font-bold mx-4">
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='login'>Login</Link></li>
-            <li><a>Item 3</a></li>
-        </ul>
+        <li className='font-semibold'>
+            <Link to='/'>Home</Link>
+        </li>
+        <li className='font-semibold'>
+            <Link to='/login'>Login</Link>
+        </li>
 
     </>
     return (
-        <div className="navbar bg-base-100 h-20 mb-8 ">
+        <div className="navbar bg-base-100 h-20 mb-8">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
