@@ -10,15 +10,15 @@ const Services = () => {
 
     }, [])
     return (
-        <div>
+        <div className='mt-40 bg-gray-100'>
             <div className='text-center'>
-                <h1 className='text-2xl font-bold text-orange-500'>Services</h1>
+                <h1 className='text-3xl font-bold text-orange-500'>Services</h1>
 
                 <p className='text-4xl font-bold '>Our Service Area</p>
-                <p className='font-medium font-mono'>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                <p className='font-medium font-mono my-4'>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     <br /> Nam tempore reiciendis accusamus nihil mollitia pariatur.</p>
             </div>
-            <div className='grid gap-5 mt-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+            <div className='grid gap-5 mt-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-3'>
                 {
                     service.map(services =>
                         <ServiceCard key={services._id} services={services}>
