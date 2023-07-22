@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import img from '../../../src/assets/images/login/login.svg';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { handleSingIn } = useContext(AuthContext);
 
     const handleLogIn = event => {
-        event.preventDefualt();
-    }
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
 
+        handleSingIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => {
+                console.error(err)
+            });
+
+    }
     return (
         <div className="hero w-full my-8">
             <div className="hero-content grid gap-28  md:grid-cols-2 flex-col lg:flex-row ">
