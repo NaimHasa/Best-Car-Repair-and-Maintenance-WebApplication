@@ -34,6 +34,36 @@ const Orders = () => {
 
         }
     }
+    const handleOrderConfirm = id => {
+        fetch(`http://localhost:5000/orders/${id}`, {
+            method: "PATCH",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ status: 'confirm' })
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    //update state
+                    const remaining = orders.filter(order => order._id !== id);
+                    const update = orders.find(order => order._id === id);
+                    update.status = 'confirm';
+                    const newOrders = [update, ...remaining];
+                    setOrders(newOrders)
+
+                }
+
+
+            })
+
+    }
+
+
+
+
 
 
     return (
@@ -51,7 +81,7 @@ const Orders = () => {
                         <th>Customar Name</th>
                         <th>Price</th>
                         <th>Phone</th>
-                        <th>Message</th>
+                        <th>Order Confirmation</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,6 +90,7 @@ const Orders = () => {
                             key={order._id}
                             order={order}
                             handleDelete={handleDelete}
+                            handleOrderConfirm={handleOrderConfirm}
 
                         >
 
