@@ -12,6 +12,29 @@ const Orders = () => {
             .then(data => setOrders(data))
     }, [user?.email])
 
+    const handleDelete = id => {
+        const procced = window.confirm('Are U Sure ? You want to cancel Item')
+        if (procced) {
+
+            fetch(`http://localhost:5000/orders/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.deletedCount > 0) {
+                        alert("Deleted Successfuly!")
+                        const remaining = orders.filter(order => order._id !== id);
+                        setOrders(remaining);
+                    }
+
+                })
+
+
+
+        }
+    }
+
 
     return (
         <div className="overflow-x-auto bg-black rounded-md">
@@ -36,6 +59,7 @@ const Orders = () => {
                         orders.map(order => <OrdersRow
                             key={order._id}
                             order={order}
+                            handleDelete={handleDelete}
 
                         >
 

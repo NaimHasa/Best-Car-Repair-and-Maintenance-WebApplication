@@ -12,7 +12,7 @@ const ServiceCard = ({ services }) => {
                 <div className="card-actions justify-between align-middle">
                     <p className='text-2xl text-orange-600 font-bold'>Price: ${price}</p>
                     <Link to={`/checkout/${_id}`}>
-                        <button className="btn btn-outline btn-info">Buy Now</button>
+                        <button className="btn btn-outline btn-info">Book Now</button>
                     </Link>
 
                 </div>

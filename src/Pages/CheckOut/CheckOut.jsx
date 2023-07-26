@@ -51,7 +51,7 @@ const CheckOut = () => {
     return (
         <div >
             <form onSubmit={handlePlaceOrder}>
-                <h1 className='text-4xl text-center font-semibold '>You are about to Order: {title}</h1>
+                <h1 className='text-4xl text-center font-semibold '>Book Service: {title}</h1>
                 <p className='text-2xl text-center font-bold'>Price: ${price}</p>
                 <div className='bg-slate-100 p-4 rounded-xl mt-5'>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6 '>
