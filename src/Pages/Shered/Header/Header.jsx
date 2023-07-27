@@ -1,17 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Logo from '../../../assets/logo.svg';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                localStorage.removeItem('car-access-token');
+
+            })
+            .catch(error => console.error(error));
+    }
+
+
+
     const menuItem = <>
         <li className='font-semibold'>
             <Link to='/'>Home</Link>
         </li>
-        <li className='font-semibold'>
-            <Link to='/orders'>My Booking</Link>
-        </li>
-        <li className='font-semibold'>
-            <Link to='/login'>Login</Link>
-        </li>
+
+        {
+            user?.email ? <>
+                <li className='font-semibold'>
+                    <Link to='/orders'>My Booking</Link>
+
+                </li>
+                <li><button onClick={handleLogOut}>Log out</button></li>
+
+            </>
+                :
+                <li className='font-semibold'>
+                    <Link to='/login'>Login</Link>
+                </li>
+
+
+        }
 
 
     </>
