@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import OrdersRow from './OrdersRow';
+import { useNavigate } from 'react-router-dom';
 
 
 const Orders = () => {
     const { user } = useContext(AuthContext)
     const [orders, setOrders] = useState([])
+    const navigate = useNavigate();
     useEffect(() => {
         fetch(`http://localhost:5000/orders?email=${user?.email}`, {
             method: 'GET',
@@ -14,8 +16,18 @@ const Orders = () => {
             }
         })
             .then(res => res.json())
-            .then(data => setOrders(data))
-    }, [user?.email])
+            .then(data => {
+                if (!data.error) {
+                    setOrders(data)
+                }
+                else {
+                    navigate('/')
+                }
+
+
+
+            })
+    }, [user?.email, navigate])
 
     const handleDelete = id => {
         const procced = window.confirm('Are U Sure ? You want to cancel Item')

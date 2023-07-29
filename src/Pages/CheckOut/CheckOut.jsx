@@ -58,7 +58,7 @@ const CheckOut = () => {
                         <input type="text" name='fristName' placeholder="Frist Name" className="input input-bordered input-accent w-full " required />
                         <input type="text" name='lastName' placeholder="Last Name" className="input input-bordered input-accent w-full " required />
                         <input type="text" name='phone' placeholder="Phone" className="input input-bordered input-accent w-full" />
-                        <input type="text" name='email' placeholder="Email" defaultValue={user?.email} className="input input-bordered input-accent w-full " readOnly required />
+                        <input type="text" name='email' placeholder="Email" defaultValue={user?.email} className="input input-bordered input-accent w-full " required readOnly />
                     </div>
                     <textarea name='message' className="textarea textarea-bordered h-24 w-full mt-3 p-4" placeholder="Your Message" required></textarea>
                     <input name='submit' type="submit" className='btn bg-slate-500 w-full  font-extrabold mt-4 ' value="Place Your Order" required />

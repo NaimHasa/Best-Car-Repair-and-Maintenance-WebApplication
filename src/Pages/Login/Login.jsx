@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import img from '../../../src/assets/images/login/login.svg';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import SocialLogin from '../Shered/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { handleSingIn } = useContext(AuthContext);
@@ -15,30 +16,10 @@ const Login = () => {
         handleSingIn(email, password)
             .then(result => {
                 const user = result.user;
-                // console.log(user);
+                console.log(user);
 
-                const loggedUser = {
-                    email: user.email
-                }
+
                 // console.log(loggedUser)
-                fetch('http://localhost:5000/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(loggedUser)
-
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        // console.log(data)
-
-                        /// Warring: local Storage is not the best way to access token second best place 
-                        localStorage.setItem('car-access-token', data.token);
-                    })
-
-
-
             })
             .catch(err => {
                 console.error(err)
@@ -78,7 +59,9 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='text-center'>New to Genius Car Please <Link to='/signup' className='text-orange-600 font-bold'>SignUp</Link></p>
+                    <SocialLogin className='text-center'></SocialLogin>
                 </div>
+
             </div>
         </div >
     );
